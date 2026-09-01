@@ -2,10 +2,10 @@
 name: skill-local-overlay
 slug: skill-local-overlay
 displayName: Skill Local Overlay
-version: "1.0.0"
-description: "Local patch layer for marketplace, connector, and built-in skills that get overwritten on upgrade. Trigger keywords: 修改内置 skill, marketplace skill 更新覆盖, upgrade overwrote my changes, overlay patch, patch ledger, connector skill 定制, builtin skill 修改丢失. Snapshot before edit, record every patch in a ledger, replay patches after upstream upgrades."
-description_zh: "marketplace / connector / 内置 skill 的本地补丁层：改动前快照 + patch ledger 记账 + 升级后重放。凡是会被平台升级覆盖的 skill，本地修改一律走 overlay 目录 + 台账，不再裸改。"
-read_when: "About to modify a skill file that is NOT agent-created (marketplace / connector / builtin), or after a platform/plugin upgrade that may have overwritten local patches."
+version: "1.0.1"
+description: "Local patch layer for marketplace, connector, and built-in skills that get overwritten on platform or plugin upgrades. Use BEFORE modifying any skill that is not agent-created, and AFTER an upgrade that may have wiped local edits. Snapshot before edit, record every change in a patch ledger (补丁台账), replay patches after upstream upgrades. Trigger keywords: 修改内置 skill, marketplace skill 更新覆盖, upgrade overwrote my changes, skill 修改丢失, 升级覆盖本地修改, overlay patch, patch ledger, 补丁台账, connector skill 定制, builtin skill 修改, keep local edits, re-apply patches."
+description_zh: "marketplace / connector / 内置 skill 的本地补丁层：改动前快照 + patch ledger 补丁台账 + 升级后重放。凡会被平台升级覆盖的 skill，本地修改一律走 overlay 目录 + 台账，不再裸改。改前必读。"
+read_when: "About to modify a marketplace, connector, or builtin skill file, or after any platform or plugin upgrade that may have overwritten local patches."
 not_for:
   - Agent-created skills (edit directly, they are owned locally)
   - Publishing skills to platforms (use skill-audit-publish)
