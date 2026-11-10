@@ -1,6 +1,6 @@
 ## Description:
 
-Skill Local Overlay helps agents preserve local edits to marketplace, connector, and built-in skills by using snapshots, a patch ledger, and replay after upgrades.
+Preserves local changes to marketplace, connector, and built-in skills with snapshots, an append-only patch ledger, and replay guidance after upgrades.
 
 This skill is ready for commercial/non-commercial use.
 
@@ -14,7 +14,7 @@ MIT-0
 
 ## Use Case:
 
-Developers and agent operators use this skill before modifying marketplace, connector, or built-in skill files, and after upgrades, to preserve and replay local changes with an auditable snapshot and ledger.
+Developers use this skill before modifying marketplace, connector, or built-in skills and after upgrades that may overwrite local edits. It guides them to snapshot originals, record minimal changes in an append-only ledger, and review patch replay after upgrades.
 
 ### Deployment Geography for Use:
 
@@ -22,32 +22,35 @@ Global
 
 ## Known Risks and Mitigations:
 
-Risk: The skill can guide changes to installed marketplace, connector, or built-in skills, which may affect future agent behavior.
+Risk: Patches change installed skill behavior and may introduce incorrect guidance.
 
-Mitigation: Review each proposed patch before applying it and keep the snapshot and ledger so changes remain auditable and reversible.
+Mitigation: Review and test each patch and its replay before relying on the changed skill.
 
-Risk: Local patches may become stale when upstream skill files are restructured during an upgrade.
+Risk: Snapshots and change history remain on the machine until removed.
 
-Mitigation: Replay patches only after comparing the new upstream file with the recorded snapshot, and mark entries for human review when they no longer apply cleanly.
+Mitigation: Protect the overlay files from unintended access and review their contents before retaining them.
+
+Risk: The published frontmatter version field is malformed and may interfere with parsing or installation.
+
+Mitigation: Have the publisher correct and validate the version field before installation.
 
 ## Reference(s):
 
-- [ClawHub skill page](https://clawhub.ai/haiyangchenbj/skills/skill-local-overlay)
-- [ClawHub publisher profile](https://clawhub.ai/user/haiyangchenbj)
+- [Skill Local Overlay on ClawHub](https://clawhub.ai/haiyangchenbj/skills/skill-local-overlay)
 
 ## Skill Output:
 
-**Output Type(s):** [text, markdown, shell commands, configuration, guidance]
+**Output Type(s):** [Guidance, Shell commands, Files]
 
-**Output Format:** [Markdown status report with paths, ledger entry details, patch summaries, and replay status tables]
+**Output Format:** [Markdown guidance with file paths and shell commands]
 
 **Output Parameters:** [1D]
 
-**Other Properties Related to Output:** [None]
+**Other Properties Related to Output:** [May include snapshot instructions, append-only ledger entries, patch summaries, and replay status.]
 
 ## Skill Version(s):
 
-1.0.2 (source: server evidence and frontmatter)
+1.0.3 (source: server-resolved release metadata)
 
 ## Ethical Considerations:
 
